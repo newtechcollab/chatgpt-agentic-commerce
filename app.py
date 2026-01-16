@@ -7,7 +7,7 @@ print("Server starting")
 mcp = FastMCP("commerce-chatgpt-app")
 
 # Product Search and Result Display Widget
-@mcp.resource("ui://widget/products.html")
+@mcp.resource(uri="ui://widget/products.html", mime_type="text/html+skybridge")
 def products_widget_template() -> str:
     return """
 <!doctype html>
