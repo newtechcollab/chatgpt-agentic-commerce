@@ -276,7 +276,7 @@ def buy_product(product_id: str) -> dict:
 @mcp.tool(
     name="find_lipstick_products",
     description="Search for Lipsticks",
-    meta={"_meta:": {"openai/outputTemplate": "ui://widget/products.html"}}
+    meta={"openai/outputTemplate": "ui://widget/products.html"}
 )
 def searchProducts(query: str, limit: int = 10) -> Dict[str, Any]:
     """Searches for Lipsticks"""
