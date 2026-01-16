@@ -6,9 +6,79 @@ print("Server starting")
 
 mcp = FastMCP("commerce-chatgpt-app")
 
-# Product Search and Result Display Widget
+# Product Search Result Display Widget
 @mcp.resource(uri="ui://widget/products.html", mime_type="text/html+skybridge")
 def products_widget_template() -> str:
+    return """
+<!doctype html>  
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Product List</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      margin: 0;
+      padding: 16px;
+      background: #f6f7f9;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 120px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+
+    .product-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="product-grid" id="productGrid"></div>
+
+  <script>
+    const products = window.openai?.toolOutput.products
+    
+    const grid = document.getElementById("productGrid");
+
+    products.forEach(product => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+
+      card.innerHTML = `
+        <img src="${product.image_url}" alt="${product.title}" />
+        <div class="product-name">${product.title}</div>
+      `;
+
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>
+""".strip()
+    
+@mcp.resource(uri="ui://widget/products-old.html", mime_type="text/html+skybridge")
+def products_widget_template_old() -> str:
     return """
 <!doctype html>
 <html>
