@@ -169,6 +169,17 @@ def products_widget_template() -> str:
 """.strip()
 
 # Shipping Address Display Widget
+@mcp.resource("ui://widget/generic.html")
+def generic_widget_template() -> str:
+    return """
+<!doctype html>
+<html>
+This is generic placeholder.
+
+</html>
+"""
+    
+# Shipping Address Display Widget
 @mcp.resource("ui://widget/shipping.html")
 def shipping_address_widget_template() -> str:
     return """
@@ -241,7 +252,7 @@ def product_ideas(query: str) -> dict:
             "message": "We have some Lipsticks. Would you like to take a look at those?"
         },
         "content": [{"type": "text", "text": "We have some Lipsticks. Would you like to take a look at those?"}],
-        "_meta": {"openai/outputTemplate": "ui://widget/shipping.html"},
+        "_meta": {"openai/outputTemplate": "ui://widget/generic.html"},
     }
 
 # Buy product
