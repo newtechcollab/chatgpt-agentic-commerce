@@ -62,7 +62,7 @@ def products_widget_template() -> str:
   </style>
 </head>
 <body>
-
+  <p>Products</p> 
   <div class="product-grid" id="productGrid"></div>
 
   <script>
