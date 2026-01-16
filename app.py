@@ -228,6 +228,22 @@ def shipping_address_widget_template() -> str:
 </html>
 """.strip()
 
+# Looking for product ideas
+@mcp.tool(
+    name="product_ideas",
+    description="Looking for some product and/or product ideas",
+)
+def product_ideas(query: str) -> dict:
+    """Looking for some product or product ideas"""
+    print(f"Your query '{query}'")
+    return {
+        "structuredContent": {
+            "message": "We have some Lipsticks. Would you like to take a look at those?"
+        },
+        "content": [{"type": "text", "text": "We have some Lipsticks. Would you like to take a look at those?"}],
+        "_meta": {"openai/outputTemplate": "ui://widget/shipping.html"},
+    }
+
 # Buy product
 @mcp.tool(
     name="buy_product",
@@ -245,13 +261,13 @@ def buy_product(product_id: str) -> dict:
         "_meta": {"openai/outputTemplate": "ui://widget/shipping.html"},
     }
 
-# Search Product
+# Search Lipsticks
 @mcp.tool(
-    name="find_products",
-    description="Search for the product",
+    name="find_lipstick_products",
+    description="Search for Lipsticks",
 )
 def searchProducts(query: str, limit: int = 10) -> Dict[str, Any]:
-    """Searches for products"""
+    """Searches for Lipsticks"""
     print(f"Searching for '{query}'")
     products: List[Dict[str, Any]] = [
         {
@@ -286,7 +302,7 @@ def searchProducts(query: str, limit: int = 10) -> Dict[str, Any]:
             "products": products,
         },
         "content": [
-            {"type": "text", "text": f"Found {len(products)} product(s) for: {query}"}
+            {"type": "text", "text": f"Found {len(products)} Lipstick(s) for: {query}"}
         ],
         "_meta": {
             "openai/outputTemplate": "ui://widget/products.html",
