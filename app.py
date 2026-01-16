@@ -66,7 +66,9 @@ def products_widget_template() -> str:
   <div class="product-grid" id="productGrid"></div>
 
   <script>
-    const products = window.openai?.toolOutput.products
+    const toolOutput = window.openai?.toolOutput ?? {};
+    alert(toolOutput)
+    const products = toolOutput.products ?? [];
     
     const grid = document.getElementById("productGrid");
 
