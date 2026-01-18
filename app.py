@@ -9,7 +9,7 @@ mcp = FastMCP("commerce-chatgpt-app")
 # Product Search Result Display Widget
 @mcp.resource(uri="ui://widget/products.html", 
               mime_type="text/html+skybridge", 
-              meta={
+              _meta={
                   "openai/widgetDomain": "https://chatgpt.com", 
                   "openai/widgetCSP": {
                       "connect_domains": ["https://chatgpt.com"], 
