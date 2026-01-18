@@ -1,5 +1,5 @@
 from pathlib import Path
-from fastmcp import FastMCP
+from mcp.server.fastmcp import FastMCP
 from typing import Any, Dict, List, Optional
 
 print("Server starting")
