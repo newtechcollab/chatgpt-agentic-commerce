@@ -13,7 +13,7 @@ mcp = FastMCP("commerce-chatgpt-app")
                   "openai/widgetDomain": "https://chatgpt.com", 
                   "openai/widgetCSP": {
                       "connect_domains": ["https://chatgpt.com"], 
-                      "resource_domains": ["https://*.com"]
+                      "resource_domains": ["https://chatgpt-agentic-commerce.fastmcp.app"]
                   }
               }
              )
